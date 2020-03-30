@@ -2,7 +2,6 @@
  * Copyright 2017-2018, Strimzi authors.
  * License: Apache License 2.0 (see the file LICENSE or http://apache.org/licenses/LICENSE-2.0.html).
  */
-//test
 package io.strimzi.operator.cluster;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -114,7 +113,7 @@ public class Main {
                     kafkaMirrorMakerAssemblyOperator,
                     kafkaBridgeAssemblyOperator);
             vertx.deployVerticle(operator,
-                res -> {
+                    res -> {
                         if (res.succeeded()) {
                             log.info("Cluster Operator verticle started in namespace {}", namespace);
                         } else {
@@ -122,7 +121,7 @@ public class Main {
                             System.exit(1);
                         }
                         fut.handle(res);
-                });
+                    });
         }
         return CompositeFuture.join(futures);
     }
@@ -167,6 +166,7 @@ public class Main {
                     returnFuture.fail("Failed to create Cluster Roles.");
                 }
             });
+
             return returnFuture;
         } else {
             return Future.succeededFuture();
