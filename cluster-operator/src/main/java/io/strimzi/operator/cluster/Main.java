@@ -52,6 +52,7 @@ public class Main {
         ClusterOperatorConfig config = ClusterOperatorConfig.fromMap(System.getenv());
         Vertx vertx = Vertx.vertx();
         KubernetesClient client = new DefaultKubernetesClient();
+
         maybeCreateClusterRoles(vertx, config, client).setHandler(crs -> {
             if (crs.succeeded())    {
                 PlatformFeaturesAvailability.create(vertx, client).setHandler(pfa -> {
