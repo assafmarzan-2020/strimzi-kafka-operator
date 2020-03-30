@@ -15,7 +15,8 @@ import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.PodResource;
 import io.fabric8.kubernetes.client.dsl.Resource;
 import io.fabric8.openshift.client.server.mock.OpenShiftServer;
-import io.vertx.core.Vertx;/*
+import io.vertx.core.Vertx;
+/*
 import io.strimzi.operator.common.model.Labels;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
