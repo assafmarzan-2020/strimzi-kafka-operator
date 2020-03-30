@@ -4,7 +4,7 @@
  */
 package io.strimzi.operator.common.operator.resource;
 
-import io.strimzi.operator.common.model.Labels;
+
 
 import io.fabric8.kubernetes.api.model.DoneablePod;
 import io.fabric8.kubernetes.api.model.Pod;
@@ -15,16 +15,18 @@ import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.PodResource;
 import io.fabric8.kubernetes.client.dsl.Resource;
 import io.fabric8.openshift.client.server.mock.OpenShiftServer;
-import io.vertx.core.Vertx;
+import io.vertx.core.Vertx;/*
+import io.strimzi.operator.common.model.Labels;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
-import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.stream.Collectors;
 
 import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
+import static java.util.Collections.singletonList;*/
+import org.junit.Rule;
+
 import static org.mockito.Mockito.when;
 
 public class PodOperatorTest extends
