@@ -33,7 +33,7 @@ public class PodOperatorTest extends
     @Rule
     public OpenShiftServer server = new OpenShiftServer(false, true);
 
-    @Test
+    /*@Test
     public void testCreateReadUpdate(TestContext context) {
         vertx.createSharedWorkerExecutor("kubernetes-ops-pool", 10);
         KubernetesClient client = server.getKubernetesClient();
@@ -75,14 +75,14 @@ public class PodOperatorTest extends
                 context.assertTrue(patchResult.succeeded());
                 patchAsync.complete();
             });
-            patchAsync.await();*/
+            patchAsync.await();*//*
             pr.reconcile(NAMESPACE, RESOURCE_NAME, null).setHandler(deleteResult -> {
                 context.assertTrue(deleteResult.succeeded());
                 async.countDown();
             });
 
         });
-    }
+    }*/
 
     @Override
     protected Class clientType() {

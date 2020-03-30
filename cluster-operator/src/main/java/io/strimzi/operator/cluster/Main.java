@@ -52,7 +52,6 @@ public class Main {
         ClusterOperatorConfig config = ClusterOperatorConfig.fromMap(System.getenv());
         Vertx vertx = Vertx.vertx();
         KubernetesClient client = new DefaultKubernetesClient();
-
         maybeCreateClusterRoles(vertx, config, client).setHandler(crs -> {
             if (crs.succeeded())    {
                 PlatformFeaturesAvailability.create(vertx, client).setHandler(pfa -> {
@@ -115,13 +114,13 @@ public class Main {
                     kafkaBridgeAssemblyOperator);
             vertx.deployVerticle(operator,
                 res -> {
-                    if (res.succeeded()) {
-                        log.info("Cluster Operator verticle started in namespace {}", namespace);
-                    } else {
-                        log.error("Cluster Operator verticle in namespace {} failed to start", namespace, res.cause());
-                        System.exit(1);
-                    }
-                    fut.handle(res);
+                        if (res.succeeded()) {
+                            log.info("Cluster Operator verticle started in namespace {}", namespace);
+                        } else {
+                            log.error("Cluster Operator verticle in namespace {} failed to start", namespace, res.cause());
+                            System.exit(1);
+                        }
+                        fut.handle(res);
                 });
         }
         return CompositeFuture.join(futures);
@@ -167,7 +166,6 @@ public class Main {
                     returnFuture.fail("Failed to create Cluster Roles.");
                 }
             });
-
             return returnFuture;
         } else {
             return Future.succeededFuture();
