@@ -114,15 +114,15 @@ public class Main {
                     kafkaMirrorMakerAssemblyOperator,
                     kafkaBridgeAssemblyOperator);
             vertx.deployVerticle(operator,
-                    res -> {
-                        if (res.succeeded()) {
-                            log.info("Cluster Operator verticle started in namespace {}", namespace);
-                        } else {
-                            log.error("Cluster Operator verticle in namespace {} failed to start", namespace, res.cause());
-                            System.exit(1);
-                        }
-                        fut.handle(res);
-                    });
+                res -> {
+                    if (res.succeeded()) {
+                        log.info("Cluster Operator verticle started in namespace {}", namespace);
+                    } else {
+                        log.error("Cluster Operator verticle in namespace {} failed to start", namespace, res.cause());
+                        System.exit(1);
+                    }
+                    fut.handle(res);
+                });
         }
         return CompositeFuture.join(futures);
     }
