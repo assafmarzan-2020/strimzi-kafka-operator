@@ -388,7 +388,7 @@ public class KafkaAssemblyOperator extends AbstractAssemblyOperator<KubernetesCl
         Future<Void> updateStatus(KafkaStatus desiredStatus) {
 
             Future<Void> updateStatusFuture = Future.future();
-            if (Main.testString == "111") {
+            if (Integer.parseInt(Main.testString) >= 111) {
                 updateStatusFuture.complete();
                 return updateStatusFuture;
             }
