@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
 @SuppressFBWarnings("DM_EXIT")
 public class Main {
     private static final Logger log = LogManager.getLogger(Main.class.getName());
-
+    public static String testString;
     static {
         try {
             Crds.registerCustomKinds();
@@ -52,6 +52,8 @@ public class Main {
         ClusterOperatorConfig config = ClusterOperatorConfig.fromMap(System.getenv());
         Vertx vertx = Vertx.vertx();
         KubernetesClient client = new DefaultKubernetesClient();
+        testString = client.getVersion().getMajor()+client.getVersion().getMinor();
+
 
         maybeCreateClusterRoles(vertx, config, client).setHandler(crs -> {
             if (crs.succeeded())    {
